@@ -1,0 +1,73 @@
+{% extends "core/base.html" %}
+
+
+{% block styles %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'core/build/css/app.css'  %}">
+{% endblock %}
+
+
+
+{% block title %}Contacto {% endblock %}
+
+
+{% block background %}{% load static %}{% static 'core/img/contact-bg.jpg' %}{% endblock %}
+
+
+{% block header %}
+ 
+    <h1>Contacto</h1>
+        <span class="subheading">Asesoría</span>
+
+{% endblock %}
+
+
+
+{% block content %}
+     <main class="contenedor seccion">
+    <h1>Contacto</h1>
+
+   
+
+    <h2>Llene el formulario de Contacto</h2>
+
+     {% if "ok" in request.GET %}
+        <p style="color:green;"  >Email enviado correctamente, gracias.</p>
+    {% endif %}
+
+    <form action="" class="formulario" method="POST">
+        {% csrf_token %}
+        
+        <fieldset>
+            <legend>Información Personal</legend>
+
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                {{ forms.name }}
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                {{ forms.email }}
+            </div>
+
+            <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                {{ forms.telepone }}
+            </div>
+
+            <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje:</label>
+                {{ forms.mesage }}
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+</main>
+
+
+
+
+
+{% endblock %}

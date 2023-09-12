@@ -1,0 +1,30 @@
+{% extends 'core/base.html'%} 
+
+{% block background %}{% load static %}{% static 'core/img/about-bg.jpg' %}{% endblock %}
+
+{% block header %}
+ 
+    <h1>Acerca de</h1>
+        <span class="subheading">Biografía</span>
+
+{% endblock %}
+
+
+{% block title %}Sobre-me{%endblock %} 
+
+{% block content %}
+    
+    {% for a in aboutmeperfil_list %}
+        <div class="col-lg-3 col-md-4 offset-lg-1">
+                <img class="img-fluid avatar" src="{{a.image.url}}" alt="">
+                </div>
+                <div class="col-lg-7 col-md-8">
+                <h2 class="section-heading">{{a.title}}</h2>   
+                    <p>{{a.description|linebreaks}}</p>
+                </div>
+            </div>  
+            </div>
+    {% endfor %}
+    <hr>
+
+{% endblock %}
